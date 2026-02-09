@@ -2,8 +2,8 @@ name: Update Jurnal Otomatis
 
 on:
   schedule:
-    - cron: '0 0 * * *' # Ini artinya jalan otomatis setiap jam 7 pagi WIB
-  workflow_dispatch: # Ini agar kamu bisa coba jalankan manual kapan saja
+    - cron: '0 0 * * *'
+  workflow_dispatch:
 
 jobs:
   build:
