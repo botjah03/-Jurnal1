@@ -1,0 +1,25 @@
+name: Update Jurnal Otomatis
+
+on:
+  schedule:
+    - cron: '0 0 * * *' # Ini artinya jalan otomatis setiap jam 7 pagi WIB
+  workflow_dispatch: # Ini agar kamu bisa coba jalankan manual kapan saja
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Ambil kode dari repo
+        uses: actions/checkout@v2
+
+      - name: Update catatan waktu
+        run: |
+          echo "Terakhir aktif pada: $(date)" > aktivitas.txt
+
+      - name: Simpan perubahan ke GitHub
+        run: |
+          git config --local user.email "action@github.com"
+          git config --local user.name "GitHub Action"
+          git add aktivitas.txt
+          git commit -m "Update aktivitas harian"
+          git push
