@@ -18,8 +18,8 @@ jobs:
 
       - name: Simpan perubahan ke GitHub
         run: |
-          git config --local user.email "action@github.com"
+          git config --local 47605652+botjah03@users.noreply.github.com
           git config --local user.name "GitHub Action"
           git add aktivitas.txt
-          git commit -m "Update aktivitas harian"
+          git commit -m "Update jurnal harian [skip ci]"
           git push
