@@ -5,21 +5,24 @@ on:
     - cron: '0 0 * * *'
   workflow_dispatch:
 
+permissions:
+  contents: write
+
 jobs:
   build:
     runs-on: ubuntu-latest
     steps:
       - name: Ambil kode dari repo
-        uses: actions/checkout@v2
+        uses: actions/checkout@v4
 
       - name: Update catatan waktu
         run: |
-          echo "Terakhir aktif pada: $(date)" > aktivitas.txt
+          echo "Terakhir aktif pada: $(date)" >> aktivitas.txt
 
       - name: Simpan perubahan ke GitHub
         run: |
-          git config --local 47605652+botjah03@users.noreply.github.com
-          git config --local user.name "GitHub Action"
+          git config --local user.email "47605652+botjah03@users.noreply.github.com"
+          git config --local user.name "botjah03"
           git add aktivitas.txt
           git commit -m "Update jurnal harian [skip ci]"
           git push
